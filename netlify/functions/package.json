@@ -1,0 +1,9 @@
+{
+  "name": "voice-clone-netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for Voice Clone App",
+  "dependencies": {
+    "openai": "^4.17.0",
+    "axios": "^1.4.0"
+  }
+} 

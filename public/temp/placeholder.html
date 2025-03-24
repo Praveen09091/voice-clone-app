@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo Generator</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="logo192" width="192" height="192"></canvas>
+    <canvas id="logo512" width="512" height="512"></canvas>
+    <script>
+        function drawLogo(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Blue gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#3a7bd5');
+            gradient.addColorStop(1, '#f83d7b');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Add text
+            ctx.fillStyle = 'white';
+            ctx.font = `${size/6}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('PK', size/2, size/2);
+            
+            // Generate download link
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = `${canvasId}.png`;
+            link.innerHTML = `Download ${canvasId}.png`;
+            document.body.appendChild(link);
+            document.body.appendChild(document.createElement('br'));
+        }
+        
+        window.onload = function() {
+            drawLogo('logo192', 192);
+            drawLogo('logo512', 512);
+        }
+    </script>
+</body>
+</html> 

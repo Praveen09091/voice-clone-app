@@ -1,6 +1,17 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+// More robust production environment detection
+const isProduction = process.env.NODE_ENV === 'production' || 
+                   process.env.REACT_APP_NODE_ENV === 'production' ||
+                   window.location.hostname !== 'localhost';
+
+// Use relative paths for Netlify Functions in production
+const API_URL = isProduction 
+  ? '/.netlify/functions'
+  : process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
+console.log("Environment:", isProduction ? "Production" : "Development");
+console.log("API URL:", API_URL);
 
 const api = {
   /**
@@ -10,7 +21,13 @@ const api = {
    */
   sendMessage: async (message) => {
     try {
-      const response = await axios.post(`${API_URL}/api/chat`, { message });
+      // In production, use Netlify Function; otherwise, use the original API endpoint
+      const endpoint = isProduction
+        ? `${API_URL}/chat`
+        : `${API_URL}/api/chat`;
+      
+      console.log("Using endpoint:", endpoint); // Debug log
+      const response = await axios.post(endpoint, { message });
       return response.data;
     } catch (error) {
       console.error('Error sending message:', error);
@@ -24,7 +41,13 @@ const api = {
    */
   healthCheck: async () => {
     try {
-      const response = await axios.get(`${API_URL}/health`);
+      // In production, use Netlify Function; otherwise, use the original API endpoint
+      const endpoint = isProduction
+        ? `${API_URL}/health`
+        : `${API_URL}/health`;
+      
+      console.log("Using health endpoint:", endpoint); // Debug log
+      const response = await axios.get(endpoint);
       return response.data;
     } catch (error) {
       console.error('Health check failed:', error);

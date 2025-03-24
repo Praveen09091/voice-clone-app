@@ -83,6 +83,26 @@ If the automated installation script doesn't work for you, follow these steps:
 
 5. Start both servers as described in the Automated Installation section
 
+## 🌐 Deployment to Netlify
+
+This application can be easily deployed to Netlify with serverless functions to handle the backend API.
+
+### Automated Deployment
+
+1. Ensure your code is committed to your repository
+2. Run the deployment script:
+   ```bash
+   ./deploy-netlify.sh
+   ```
+3. Follow the prompts to configure your Netlify site
+4. After deployment, set your OpenAI API key in the Netlify dashboard:
+   - Go to Site settings > Environment variables
+   - Add the variable `OPENAI_API_KEY` with your API key
+
+### Manual Deployment
+
+For step-by-step manual deployment instructions, see [NETLIFY_DEPLOYMENT.md](./NETLIFY_DEPLOYMENT.md).
+
 ## 🧠 How It Works
 
 1. **Voice Input**: The app uses the Web Speech API to convert your speech to text
@@ -103,6 +123,7 @@ If the automated installation script doesn't work for you, follow these steps:
 - Node.js
 - Express
 - OpenAI API
+- Netlify Functions (for deployment)
 
 ## 📱 Mobile Support
 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3a7bd5" />
+    <meta
+      name="description"
+      content="Praveen Kumar Oleti Voice Bot - An interactive AI voice assistant that answers questions about Praveen Kumar"
+    />
+    <meta name="keywords" content="Praveen Kumar Oleti, AI, Voice Bot, Portfolio, Resume, Prompt Engineer, Gen AI Developer" />
+    <meta name="author" content="Praveen Kumar Oleti" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Praveen Kumar's Voice Bot" />
+    <meta property="og:description" content="Interactive AI voice assistant that answers questions about Praveen Kumar Oleti" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Praveen Kumar's Voice Bot" />
+    <meta property="twitter:description" content="Interactive AI voice assistant that answers questions about Praveen Kumar Oleti" />
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to speed up resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>Praveen Kumar's Voice Bot | Interactive AI Assistant</title>
+    
+    <style>
+      /* Initial loading animation */
+      .loader-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      .loader {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 5px solid rgba(58, 123, 213, 0.06);
+        border-top: 5px solid #3a7bd5;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      
+      .loader-text {
+        font-family: 'Poppins', sans-serif;
+        color: #3a7bd5;
+        font-weight: 600;
+        font-size: 18px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      @keyframes fadeOut {
+        to { opacity: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run Praveen Kumar's Voice Bot.</noscript>
+    
+    <!-- Initial loading screen -->
+    <div class="loader-container" id="loader">
+      <div class="loader"></div>
+      <div class="loader-text">Loading Praveen's Voice Bot...</div>
+    </div>
+    
+    <div id="root"></div>
+    
+    <script>
+      // Hide loader when page is fully loaded
+      window.addEventListener('load', function() {
+        const loader = document.getElementById('loader');
+        loader.style.animation = 'fadeOut 0.5s forwards';
+        setTimeout(function() {
+          loader.style.display = 'none';
+        }, 500);
+      });
+    </script>
+  </body>
+</html> 
